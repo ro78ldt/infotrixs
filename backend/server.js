@@ -6,7 +6,8 @@ import colors from "colors";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import chatRoutes from "./routes/chatRoutes.js";
-const messageRoutes = require("./routes/messageRoutes");
+import messageRoutes from "./routes/messageRoutes.js";
+import { Server } from "socket.io";
 
 const app = express();
 dotenv.config();
@@ -40,11 +41,10 @@ const server = app.listen(
   console.log(`Server started on port ${PORT}`.yellow.bold)
 );
 
-const io = require("socket.io")(server, {
+const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: "http://localhost:3000",
-    // credentials: true,
   },
 });
 

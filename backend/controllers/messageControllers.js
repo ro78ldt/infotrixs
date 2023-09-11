@@ -1,12 +1,12 @@
-const asyncHandler = require("express-async-handler");
-const Message = require("../Models/messageModel");
-const User = require("../Models/userModel");
-const Chat = require("../Models/chatModel");
+import asyncHandler from "express-async-handler";
+import { Message } from "../Models/messageModel.js";
+import { User } from "../Models/userModel.js";
+import { Chat } from "../Models/chatModel.js";
 
 //@description     Get all Messages
 //@route           GET /api/Message/:chatId
 //@access          Protected
-const allMessages = asyncHandler(async (req, res) => {
+export const allMessages = asyncHandler(async (req, res) => {
   try {
     const messages = await Message.find({ chat: req.params.chatId })
       .populate("sender", "name pic email")
@@ -21,7 +21,7 @@ const allMessages = asyncHandler(async (req, res) => {
 //@description     Create New Message
 //@route           POST /api/Message/
 //@access          Protected
-const sendMessage = asyncHandler(async (req, res) => {
+export const sendMessage = asyncHandler(async (req, res) => {
   const { content, chatId } = req.body;
 
   if (!content || !chatId) {
@@ -53,5 +53,3 @@ const sendMessage = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
-
-module.exports = { allMessages, sendMessage };

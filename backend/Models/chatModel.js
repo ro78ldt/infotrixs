@@ -8,26 +8,20 @@ const chatModel = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User", //Reference to the user model
         },
-      ],
-    latestMessage: {
+        ],
+        latestMessage: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Message",
         },
-    groupAdmin: {
-        type: mongoose.Schema.Types.ObjectId,
+        groupAdmin: {
+            type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-    },
+        },
 
     },
     {
-        timestamps: truw,
+        timestamps: true,
     }
 );
 
 export const Chat = mongoose.model("Chat", chatModel);
-
-
-
-
-
-//

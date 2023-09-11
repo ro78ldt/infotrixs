@@ -15,8 +15,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { ChatState } from "../../Context/ChatProvider";
-import UserBadgeItem from "../UserAvatar/UserBadgeItem";
+import { ChatState } from "../../Context/ChatProvider.js";
+import UserBadgeItem from "../UserAvatar/UserBadgeItem.js";
 import UserListItem from "../UserAvatar/UserListItem.js";
 
 const GroupChatModal = ({ children }) => {
